@@ -1,3 +1,5 @@
+import dataStats from 'data/data.json';
+
 import {
   BlogCard,
   Container,
@@ -24,17 +26,14 @@ export const App = () => {
           avatar={dataArticle.avatar}
           postedAt={dataArticle.postedAt}
         />
-
         <Heading marginTop="50px" marginBottom="50px" textAlign="center">
           Task 2
         </Heading>
-        <Statistics />
-
+        <Statistics title="Main Statistics" stats={dataStats} />
         <Heading marginTop="50px" marginBottom="50px" textAlign="center">
           Task 3
         </Heading>
         <ForbesList />
-
         <Heading marginTop="50px" marginBottom="50px" textAlign="center">
           Task 4
         </Heading>
