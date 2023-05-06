@@ -36,7 +36,7 @@ export const CountrySearch = () => {
     <Section>
       <Container>
         <SearchForm onSubmit={onFormSubmit} />
-        <CountryList countries={countries} />
+        <CountryList countries={countries} region={region} />
       </Container>
     </Section>
   );
