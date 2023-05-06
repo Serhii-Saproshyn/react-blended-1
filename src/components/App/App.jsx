@@ -1,35 +1,18 @@
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { Container, Header, Section, Text } from 'components';
-import { Gallery, Todos } from 'tabs';
+import { Header } from 'components';
+import { CountrySearch, Home, Country } from 'pages';
+import { Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <>
-      <Header />
-
-      <Section>
-        <Container>
-          <Tabs>
-            <TabList>
-              <Tab>
-                <Text>Gallery</Text>
-              </Tab>
-              <Tab>
-                <Text>Todos</Text>
-              </Tab>
-            </TabList>
-
-            <TabPanel>
-              <Gallery />
-            </TabPanel>
-
-            <TabPanel>
-              <Todos />
-            </TabPanel>
-          </Tabs>
-        </Container>
-      </Section>
-    </>
+    <div>
+      <h2>App</h2>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route index element={<Home />}></Route>
+          <Route path="country" element={<CountrySearch />}></Route>
+          <Route path="country/:countryId" element={<Country />}></Route>
+        </Route>
+      </Routes>
+    </div>
   );
 };
