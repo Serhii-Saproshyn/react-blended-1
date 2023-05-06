@@ -8,9 +8,9 @@ export const App = () => {
       <h2>App</h2>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route index element={<Home />}></Route>
-          <Route path="country" element={<CountrySearch />}></Route>
-          <Route path="country/:countryId" element={<Country />}></Route>
+          <Route index element={<Home />} />
+          <Route path="country" element={<CountrySearch />} />
+          <Route path="country/:countryId" element={<Country />} />
         </Route>
       </Routes>
     </div>

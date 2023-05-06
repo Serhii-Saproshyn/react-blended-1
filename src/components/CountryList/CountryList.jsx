@@ -8,7 +8,7 @@ export const CountryList = ({ countries }) => {
         return (
           <GridItem key={country.id}>
             <Link to={`country/${country.id}`}>
-              <img src={country.flag} />
+              <img src={country.flag} alt={country.id} />
             </Link>
           </GridItem>
         );
