@@ -1,6 +1,5 @@
-import { nanoid } from 'nanoid';
-import { useState, useEffect } from 'react';
-
+// import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Container,
   Grid,
@@ -11,63 +10,36 @@ import {
   Text,
   Todo,
 } from 'components';
+// import { store } from 'redux/store';
 
 export const App = () => {
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem('todos')) || []
-  );
+  const todos = useSelector(store => store);
+  console.log(todos);
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
+  // const [todos, setTodos] = useState(
+  //   JSON.parse(localStorage.getItem('todos')) || []
+  // );
 
-  const addTodo = text => {
-    const todo = {
-      id: nanoid(),
-      text,
-    };
-
-    setTodos(todos => [...todos, todo]);
-  };
-
-  const handleSubmit = data => {
-    addTodo(data);
-  };
-
-  const deleteTodo = id => {
-    setTodos(prevState => prevState.filter(todo => todo.id !== id));
-  };
-
-  const updateTodo = (newText, updatedId) => {
-    setTodos(prevTodos =>
-      prevTodos.map(({ text, id }) => {
-        return id === updatedId ? { text: newText, id } : { text, id };
-      })
-    );
-  };
+  // useEffect(() => {
+  //   localStorage.setItem('todos', JSON.stringify(todos));
+  // }, [todos]);
 
   return (
     <>
       <Header />
       <Section>
         <Container>
-          <SearchForm onSubmit={handleSubmit} />
+          <SearchForm />
 
-          {todos.length === 0 && (
+          {todos?.length === 0 && (
             <Text textAlign="center">There are no any todos ... </Text>
           )}
 
           <Grid>
-            {todos.length > 0 &&
+            {todos?.length > 0 &&
               todos.map((todo, index) => (
                 <GridItem key={todo.id}>
-                  <Todo
-                    id={todo.id}
-                    text={todo.text}
-                    counter={index + 1}
-                    onDelete={deleteTodo}
-                    onUpdate={updateTodo}
-                  />
+                  <Todo id={todo.id} text={todo.text} counter={index + 1} />
                 </GridItem>
               ))}
           </Grid>
