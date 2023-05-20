@@ -4,7 +4,7 @@ import { DeleteButton, TodoWrapper, EditButton } from './Todo.styled';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, updateTodo } from 'redux/todoSlise';
 
-export const Todo = ({ text, counter, onUpdate, id }) => {
+export const Todo = ({ text, counter, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {

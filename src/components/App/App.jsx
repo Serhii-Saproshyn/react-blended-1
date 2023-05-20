@@ -13,8 +13,7 @@ import {
 // import { store } from 'redux/store';
 
 export const App = () => {
-  const todos = useSelector(store => store);
-  console.log(todos);
+  const todos = useSelector(store => store.todos);
 
   // const [todos, setTodos] = useState(
   //   JSON.parse(localStorage.getItem('todos')) || []
